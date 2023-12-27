@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="parents">
+    <ul>
+        {% for parent in parents %}
+        <li>
+            <a href="/browse?parent={{ parent[0] }}">{{ parent }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="childrens">
+    <ul>
+        {% if childrens %}
+            {% for children in childrens %}
+            <li>
+                {{ children }}
+            </li>
+            {% endfor %}
+        {% else %}
+            <li>
+                This parent has no childrens
+            </li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}

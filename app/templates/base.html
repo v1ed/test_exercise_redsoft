@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <link href="static/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            <ul class="header">
+                <li>
+                    <div class="_link">
+                        <a href="/">Home</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="_link">
+                        <a href="/browse">Services</a>
+                    </div>
+                </li>
+
+                {% if current_user.username %}
+                <li>
+                    <div class="_link">{{ current_user.username }}</div>
+                </li>
+                
+                <li>
+                    <div class="_link">
+                        <a href="/logout">Log out</a>
+                    </div>
+                </li>
+
+                {% else %}
+                <li>
+                    <div class="_link">
+                        <a href="/login">Log in</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="_link">
+                        <a href="/register">Register</a>
+                    </div>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        {% block content %}{% endblock content%}
+    </body>
+</html>

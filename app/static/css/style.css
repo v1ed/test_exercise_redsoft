@@ -1,0 +1,22 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: Arial;
+    /* background: #323232; */
+    /* color: white; */
+}
+
+.header {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 1em 1em;
+    width: 100%;    
+}
+
+._link {
+    /* color: #ffffff; */
+    text-decoration: none;
+    padding: 0 1em;
+}
