@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% if cur_parent %}
+    <h1>Childrens of {{ cur_parent }}</h1>
+{% else %}
+    <h1>Root</h1>
+{% endif %}
+
 <div class="content">
     <div class="parents">
         <ul>
             {% for parent in parents %}
             <li class="parent">
-                <div class="parent_key"> {{ parent[0] }} </div>
+                <div class="parent_key"> {{ parent.key }} </div>
                 <div class="parent_name">
-                    <a href="/browse?parent={{ parent[0] }}"> {{ parent[1] }} </a>
+                    <a href="{{url_for(request.endpoint, parent=parent.key)}}"> {{ parent.name }} </a>
                 </div>
             </li>
             {% endfor %}
@@ -16,9 +23,16 @@
     </div>
 
     <div class="childrens">
+        <a href="{{url_for(request.endpoint, sort_on='name', parent=cur_parent)}}">
+        {% set sort_on = request.args.sort_on|default('key') %}
+            Sort by name
+        </a>
+        <a href="{{url_for(request.endpoint, sort_on='key', parent=cur_parent)}}">
+            Sort by key
+        </a>
         <ul>
             {% if childrens %}
-                {% for children in childrens %}
+                {% for children in childrens|sort(attribute=sort_on) %}
                 <li class="children">
                     <div class="children_key"> {{ children.key }} </div>
                     <div class="children_name"> {{ children.name }} </div>

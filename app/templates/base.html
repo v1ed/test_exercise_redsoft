@@ -10,13 +10,13 @@
             <ul class="header">
                 <li>
                     <div class="_link">
-                        <a href="/">Home</a>
+                        <a href="{{url_for('index')}}">Home</a>
                     </div>
                 </li>
 
                 <li>
                     <div class="_link">
-                        <a href="/browse">Services</a>
+                        <a href="{{url_for('browse')}}">Services</a>
                     </div>
                 </li>
 
@@ -27,20 +27,20 @@
                 
                 <li>
                     <div class="_link">
-                        <a href="/logout">Log out</a>
+                        <a href="{{url_for('logout')}}">Log out</a>
                     </div>
                 </li>
 
                 {% else %}
                 <li>
                     <div class="_link">
-                        <a href="/login">Log in</a>
+                        <a href="{{url_for('login')}}">Log in</a>
                     </div>
                 </li>
 
                 <li>
                     <div class="_link">
-                        <a href="/register">Register</a>
+                        <a href="{{url_for('register')}}">Register</a>
                     </div>
                 </li>
                 {% endif %}

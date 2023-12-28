@@ -22,3 +22,7 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
             raise ValidationError("Use a different username")
+
+
+class Sort(FlaskForm):
+    sort = SubmitField("Sort by name")
