@@ -13,7 +13,7 @@ async def get_user(username):
     return User.query.filter_by(username=username).first()
 
 
-def get_parents(data, l=[]):
+def get_parents(data, l):
     for d in data:
         if 'children' in d.keys():
             l += [(d["key"], d["name"])]
@@ -36,7 +36,7 @@ def parent_searcher(data, key):
 async def get_data(key=""):
     with open("server_data.json", "r") as f:
         data = json.load(f)
-    parents = get_parents(data)
+    parents = get_parents(data, [])
     print(parents)
     childrens = parent_searcher(data, key)
     asyncio.sleep(1)

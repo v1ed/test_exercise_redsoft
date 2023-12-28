@@ -1,29 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="parents">
-    <ul>
-        {% for parent in parents %}
-        <li>
-            <a href="/browse?parent={{ parent[0] }}">{{ parent }}
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-
-<div class="childrens">
-    <ul>
-        {% if childrens %}
-            {% for children in childrens %}
-            <li>
-                {{ children }}
+<div class="content">
+    <div class="parents">
+        <ul>
+            {% for parent in parents %}
+            <li class="parent">
+                <div class="parent_key"> {{ parent[0] }} </div>
+                <div class="parent_name">
+                    <a href="/browse?parent={{ parent[0] }}"> {{ parent[1] }} </a>
+                </div>
             </li>
             {% endfor %}
-        {% else %}
-            <li>
-                This parent has no childrens
-            </li>
-        {% endif %}
-    </ul>
+        </ul>
+    </div>
+
+    <div class="childrens">
+        <ul>
+            {% if childrens %}
+                {% for children in childrens %}
+                <li class="children">
+                    <div class="children_key"> {{ children.key }} </div>
+                    <div class="children_name"> {{ children.name }} </div>
+                </li>
+                {% endfor %}
+            {% else %}
+                <li>
+                    This parent has no childrens
+                </li>
+            {% endif %}
+        </ul>
+    </div>
 </div>
 {% endblock %}

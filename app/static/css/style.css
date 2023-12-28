@@ -20,3 +20,20 @@ html, body {
     text-decoration: none;
     padding: 0 1em;
 }
+
+.content {
+    display: flex;
+}
+
+.parents, .childrens {
+    width: 50%;
+}
+
+.parent, .children {
+    list-style: none;
+    display: flex;
+}
+
+.parent_key, .children_key {
+    width: 10%;
+}
